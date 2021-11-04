@@ -9,4 +9,4 @@
 local map = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 
-map('n', '<leader>gs', ':G<CR>', default_opts)
+map('n', '<leader>gs', ':Neogit<CR>', default_opts)

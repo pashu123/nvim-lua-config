@@ -38,7 +38,10 @@ return packer.startup(function(use)
   use 'Mofiqul/vscode.nvim'
 
   -- LSP
-  use 'neovim/nvim-lspconfig'
+  use {
+    'neovim/nvim-lspconfig',
+    'williamboman/nvim-lsp-installer',
+  }
 
   -- autocomplete
   use { 'hrsh7th/nvim-cmp',
@@ -65,8 +68,8 @@ return packer.startup(function(use)
     end,
   }
 
-  --git with fugitive
-  use 'tpope/vim-fugitive'
+  --Neogit is better than fugitive.
+  use 'TimUntersberger/neogit'
 
   --nerd commenter
   use 'preservim/nerdcommenter'
