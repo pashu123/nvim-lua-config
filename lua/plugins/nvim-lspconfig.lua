@@ -89,18 +89,11 @@ https://github.com/typescript-language-server/typescript-language-server
 local servers = { 'bashls', 'pyright', 'clangd' }
 
 -- Set settings for language servers below
---
--- tsserver settings
-local ts_settings = function(client)
-  client.resolved_capabilities.document_formatting = false
-  ts_settings(client)
-end
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    ts_settings = ts_settings,
     flags = {
       debounce_text_changes = 150,
     }
