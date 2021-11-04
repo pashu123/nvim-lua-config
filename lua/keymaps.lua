@@ -14,9 +14,6 @@ local cmd = vim.cmd
 -- clear search highlighting
 map('n', '<leader>c', ':nohl<CR>', default_opts)
 
--- map Esc to kk
-map('i', 'kk', '<Esc>', {noremap = true})
-
 -- don't use arrow keys
 map('', '<up>', '<nop>', { noremap = true })
 map('', '<down>', '<nop>', { noremap = true })
@@ -53,7 +50,4 @@ map('v', '<leader>fc', ':FormatLines<CR>', default_opts)
 
 -- fast editing config files
 map('n', '<leader>,', ':vsplit ~/.config/nvim/init.lua <CR>', default_opts)
-map('n', '<C-s>', ':source ~/.config/nvim/init.lua <CR>', default_opts)
 
--- Vista tag-viewer
-map('n', '<C-m>', ':Vista!!<CR>', default_opts)   -- open/close

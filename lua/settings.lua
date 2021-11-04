@@ -16,7 +16,7 @@ local opt = vim.opt         		-- global/buffer/windows-scoped options
 -- General
 -----------------------------------------------------------
 g.mapleader = ' '             -- change leader to a comma
-opt.mouse = 'c'               -- enable mouse support
+opt.mouse = 'c'               -- disable mouse support
 opt.clipboard = 'unnamedplus' -- copy/paste to system clipboard
 opt.swapfile = false          -- don't use swapfile
 g.rg_command = 'rg --vimgrep -S' --smart case search
