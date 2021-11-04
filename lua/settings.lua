@@ -126,5 +126,13 @@ for _, plugin in pairs(disabled_built_ins) do
     g["loaded_" .. plugin] = 1
 end
 
--- disable nvim intro
-opt.shortmess:append "sI"
+-- disable the lsp diagnostic (only show when hover)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        underline = false,
+        virtual_text = false,
+        signs = true,
+        update_in_insert = true,
+  }
+)
+cmd [[ autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics() ]]
