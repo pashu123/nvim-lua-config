@@ -34,15 +34,11 @@ opt.ignorecase = true         -- ignore case letters when search
 opt.smartcase = true          -- ignore lowercase for the whole pattern
 opt.linebreak = true          -- wrap on word boundary
 
--- remove whitespace on save
-cmd [[au BufWritePre * :%s/\s\+$//e]]
-
-
 -- highlight on yank
 exec([[
   augroup YankHighlight
     autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=125}
   augroup end
 ]], false)
 
@@ -58,7 +54,8 @@ opt.synmaxcol = 240       -- max column for syntax highlight
 -- Colorscheme
 -----------------------------------------------------------
 opt.termguicolors = true      -- enable 24-bit RGB colors
-cmd [[colorscheme monokai]]
+g.vscode_style = "dark"
+cmd [[colorscheme vscode]]
 
 -----------------------------------------------------------
 -- Tabs, indent

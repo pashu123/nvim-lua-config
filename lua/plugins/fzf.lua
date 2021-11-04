@@ -9,9 +9,8 @@
 local map = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 
-map('n', '<leader>,f', ':BLines<CR>', default_opts)
-map('n', '<C-f>', ':Files<CR>', default_opts)
-map('n', '<leader>ff', ':Rg', default_opts)
-map('n', '<C-g>', ':BCommits<CR>', default_opts)
-map('n', '<leader>b', ':Buffers<CR>', default_opts)
-
+map('n', '<leader>,f', ':FzfLua blines<CR>', default_opts)
+map('n', '<C-f>', ':FzfLua files<CR>', default_opts)
+map('n', '<leader>ff', ':FzfLua live_grep<CR>', default_opts)
+map('n', '<C-g>', ':FzfLua git_bcommits<CR>', default_opts)
+map('n', '<leader>b', ':FzfLua buffers<CR>', default_opts)

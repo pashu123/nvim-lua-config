@@ -37,8 +37,8 @@ return packer.startup(function(use)
   -- treesitter interface
   use 'nvim-treesitter/nvim-treesitter'
 
-  -- colorscheme
-  use 'tanvirtin/monokai.nvim'
+  -- vscode like colorscheme
+  use 'Mofiqul/vscode.nvim'
 
   -- LSP
   use 'neovim/nvim-lspconfig'
@@ -54,10 +54,11 @@ return packer.startup(function(use)
     },
   }
 
-  -- statusline
-  use { 'famiu/feline.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
+
 
   -- git labels
   use { 'lewis6991/gitsigns.nvim',
@@ -74,8 +75,24 @@ return packer.startup(function(use)
   use 'preservim/nerdcommenter'
 
   --fzf install, (Sorry telescope)
-  use 'junegunn/fzf.vim'
   use {'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
+  use { 'ibhagwan/fzf-lua',
+  requires = {
+    'vijaymarupudi/nvim-fzf',
+    'kyazdani42/nvim-web-devicons' } -- optional for icons
+  }
+
+  -- Dim other parts of code.
+  use {
+    "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 
   -- root your main project
   use 'airblade/vim-rooter'
@@ -83,5 +100,30 @@ return packer.startup(function(use)
   -- Useful for code formating.
   use 'google/vim-maktaba'
   use 'google/vim-codefmt'
+
+  -- Tmux navigator which is important
+
+  use({
+    "aserowy/tmux.nvim",
+    config = function()
+      require("tmux").setup({
+          -- overwrite default configuration
+          -- here, e.g. to enable default bindings
+          copy_sync = {
+              -- enables copy sync and overwrites all register actions to
+              -- sync registers *, +, unnamed, and 0 till 9 from tmux in advance
+              enable = true,
+          },
+          navigation = {
+              -- enables default keybindings (C-hjkl) for normal mode
+              enable_default_keybindings = true,
+          },
+          resize = {
+              -- enables default keybindings (A-hjkl) for normal mode
+              enable_default_keybindings = true,
+          }
+        })
+    end
+  })
 
 end)
