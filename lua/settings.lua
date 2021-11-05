@@ -33,6 +33,7 @@ opt.splitbelow = true         -- orizontal split to the bottom
 opt.ignorecase = true         -- ignore case letters when search
 opt.smartcase = true          -- ignore lowercase for the whole pattern
 opt.linebreak = true          -- wrap on word boundary
+opt.scrolloff = 5             -- leave 5 spaces in bottom 
 
 -- highlight on yank
 exec([[
