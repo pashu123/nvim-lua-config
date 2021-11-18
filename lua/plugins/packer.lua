@@ -74,12 +74,10 @@ return packer.startup(function(use)
   --nerd commenter
   use 'preservim/nerdcommenter'
 
-  --fzf install, (Sorry telescope)
-  use {'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
-  use { 'ibhagwan/fzf-lua',
-  requires = {
-    'vijaymarupudi/nvim-fzf',
-    'kyazdani42/nvim-web-devicons' } -- optional for icons
+  -- telescope utils
+  use {
+  'nvim-telescope/telescope.nvim',
+  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   -- Dim other parts of code.
