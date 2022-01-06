@@ -92,6 +92,9 @@ return packer.startup(function(use)
     end
   }
 
+  -- git diff view of your code easier.
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
   -- root your main project
   use 'airblade/vim-rooter'
 
