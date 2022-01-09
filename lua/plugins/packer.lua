@@ -102,6 +102,9 @@ return packer.startup(function(use)
   use 'google/vim-maktaba'
   use 'google/vim-codefmt'
 
+  -- Git blame.  (:GitBlameToggle)
+  use 'f-person/git-blame.nvim'
+
   -- Tmux navigator which is important
 
   use({
