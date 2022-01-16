@@ -11,7 +11,7 @@ local default_opts = { noremap = true, silent = true }
 local actions = require('telescope.actions')require('telescope').setup{
   pickers = {
     buffers = {
-      sort_lastused = true
+      sort_mru = true
     }
   },
   vimgrep_arguments = {
