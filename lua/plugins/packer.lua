@@ -66,13 +66,9 @@ return packer.startup(function(use)
   }
 
 
-  -- git labels
-  use { 'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('gitsigns').setup()
-    end,
-  }
+  -- git signs
+  use 'lewis6991/gitsigns.nvim'
+
 
   --Neogit is better than fugitive.
   use 'TimUntersberger/neogit'
