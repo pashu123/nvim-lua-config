@@ -20,6 +20,8 @@ opt.mouse = 'c'               -- disable mouse support
 opt.clipboard = 'unnamedplus' -- copy/paste to system clipboard
 opt.swapfile = false          -- don't use swapfile
 g.rg_command = 'rg --vimgrep -S' --smart case search
+opt.undofile = true
+opt.undodir='$HOME/.config/nvim'
 
 -----------------------------------------------------------
 -- Neovim UI
