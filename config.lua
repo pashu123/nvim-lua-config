@@ -61,3 +61,17 @@ local opts = {
   cmd = { clangd_bin, unpack(clangd_flags) },
 }
 require("lvim.lsp.manager").setup("clangd", opts)
+
+
+
+-- Change it to point to iree-mlir-lsp-server.
+-- Has support to more dialects and operations.
+local mlir_options = {
+  cmd = { "iree-mlir-lsp-server" },
+}
+require("lvim.lsp.manager").setup("mlir_lsp_server", mlir_options)
+require("lvim.lsp.manager").setup("tblgen_lsp_server")
+require("lvim.lsp.manager").setup("mlir_pdll_lsp_server")
+
+
+vim.cmd [[ autocmd BufRead,BufNewFile *.mlir set filetype=mlir ]]
