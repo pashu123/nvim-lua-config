@@ -75,3 +75,13 @@ require("lvim.lsp.manager").setup("mlir_pdll_lsp_server")
 
 
 vim.cmd [[ autocmd BufRead,BufNewFile *.mlir set filetype=mlir ]]
+
+lvim.plugins = {
+  {
+    "christoomey/vim-tmux-navigator",
+    event = "VimEnter",
+    config = function()
+      vim.g.tmux_navigator_no_mappings = 0
+    end,
+  },
+}
