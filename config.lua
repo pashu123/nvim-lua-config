@@ -4,7 +4,6 @@
 -- Discord: https://discord.com/invite/Xb9B4Ny
 --
 --
---
 lvim.colorscheme = "lunar"
 
 lvim.format_on_save.enabled = false
@@ -24,18 +23,15 @@ vim.g.editorconfig = false
 lvim.builtin.telescope.pickers.buffers.sort_mru = true
 lvim.builtin.telescope.pickers.buffers.ignore_current_buffer = true
 
-table.insert(lvim.plugins, {
-  "zbirenbaum/copilot-cmp",
-  event = "InsertEnter",
-  dependencies = { "zbirenbaum/copilot.lua" },
-  config = function()
-    vim.defer_fn(function()
-      require("copilot").setup() -- https://github.com/zbirenbaum/copilot.lua/blob/master/README.md#setup-and-configuration
-      require("copilot_cmp").setup() -- https://github.com/zbirenbaum/copilot-cmp/blob/master/README.md#configuration
-    end, 100)
-  end,
-})
 
+-- Renames the symbol under the cursor. ALso, renames the references.
+vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
+
+-- Search in the current buffer.
+vim.keymap.set("n", "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
+
+
+-- Clangd specific settings.
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "clangd" })
 
 local clangd_flags = {
@@ -63,7 +59,6 @@ local opts = {
 require("lvim.lsp.manager").setup("clangd", opts)
 
 
-
 -- Change it to point to iree-mlir-lsp-server.
 -- Has support to more dialects and operations.
 local mlir_options = {
@@ -74,8 +69,10 @@ require("lvim.lsp.manager").setup("tblgen_lsp_server")
 require("lvim.lsp.manager").setup("mlir_pdll_lsp_server")
 
 
+-- Add the mlir filetype.
 vim.cmd [[ autocmd BufRead,BufNewFile *.mlir set filetype=mlir ]]
 
+-- Add the new required plugins.
 lvim.plugins = {
   {
     "christoomey/vim-tmux-navigator",
@@ -84,4 +81,15 @@ lvim.plugins = {
       vim.g.tmux_navigator_no_mappings = 0
     end,
   },
+  {
+    "zbirenbaum/copilot-cmp",
+    event = "InsertEnter",
+    dependencies = { "zbirenbaum/copilot.lua" },
+    config = function()
+      vim.defer_fn(function()
+        require("copilot").setup()   -- https://github.com/zbirenbaum/copilot.lua/blob/master/README.md#setup-and-configuration
+        require("copilot_cmp").setup() -- https://github.com/zbirenbaum/copilot-cmp/blob/master/README.md#configuration
+      end, 100)
+    end,
+  }
 }
