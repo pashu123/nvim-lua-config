@@ -24,13 +24,6 @@ lvim.builtin.telescope.pickers.buffers.sort_mru = true
 lvim.builtin.telescope.pickers.buffers.ignore_current_buffer = true
 
 
--- Renames the symbol under the cursor. ALso, renames the references.
-vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
-
--- Search in the current buffer.
-vim.keymap.set("n", "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
-
-
 -- Clangd specific settings.
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "clangd" })
 
@@ -93,3 +86,14 @@ lvim.plugins = {
     end,
   }
 }
+
+-- Search in the current buffer.
+lvim.builtin.which_key.mappings["t"] = {
+  "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Current buffer fuzzy."
+}
+
+-- Renames the symbol under the cursor. ALso, renames the references.
+vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
+
+-- Awesome floating terminal.
+lvim.builtin.terminal.open_mapping = "<c-t>"
